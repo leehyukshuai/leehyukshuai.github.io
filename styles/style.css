@@ -38,3 +38,13 @@ button {
     font-family: 'ZCOOL KuaiLe';
     background-color: #348498;
 }
+
+a {
+    color: aliceblue;
+}
+
+.underImage {
+    font-size: 16px;
+    opacity: 50%;
+    text-align: center;
+}
