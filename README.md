@@ -1,2 +1,2 @@
 # leehyukshuai.github.io
-personal website
+This is my personal website, where I'm learning html, css and javascripts.
