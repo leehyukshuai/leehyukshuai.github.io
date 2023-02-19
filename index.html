@@ -32,7 +32,9 @@
             <li>秦怡哲</li>
         </ul>
         <h2> 计算机动画 </h2>
-        <video src="videos/Parkour_Short.mov" controls>
+        <video controls poster="images/poster.png">
+            <source src="videos/Parkour_Short.mp4" type="video/mp4">
+            <source src="videos/Parkour_Short.webm" type="video/webm">
             您的浏览器并不支持视频播放。
         </video>
         <h2> 更改配色 </h2>
@@ -41,8 +43,18 @@
             <input type="color" title="主题颜色" class="color">
             <input type="color" title="字体颜色" class="color">
         </p>
-        <h3> 食谱下载 </h3>
+        <h2> 食谱下载 </h2>
         <p> <a href="resources/宫保鸡丁.html" download="宫保鸡丁的菜谱.html">宫保鸡丁的做法</a> </p>
+        <h2> 嵌入网页 </h2>
+        <div>
+            <iframe width="500" height="400" frameborder="0" src="https://cn.bing.com/maps/embed?h=400&w=500&cp=qnjc5ptpzn18&lvl=16&typ=d&sty=r&src=SHELL&FORM=MBEDV8" scrolling="no">
+            </iframe>
+            <div style="white-space: nowrap; text-align: center; width: 500px; padding: 6px 0;">
+               <a id="largeMapLink" target="_blank" href="https://cn.bing.com/maps?cp=qnjc5ptpzn18&amp;sty=r&amp;lvl=16&amp;FORM=MBEDLD">View Larger Map</a> &nbsp; | &nbsp;
+               <a id="dirMapLink" target="_blank" href="https://cn.bing.com/maps/directions?cp=qnjc5ptpzn18&amp;sty=r&amp;lvl=16&amp;rtp=~pos.qnjc5p_tpzn18____&amp;FORM=MBEDLD">Get Directions</a>
+           </div>
+       </div>
+       <iframe src="https://tntfiles.com/s1trnny844/bad-apple-but-it-s-in-4k-60fps-mp4?upload_complete" scrolling width="50%" height="400"> Bad Apple [4k 60fps]</iframe>
         <hr>
         <p><i id="welcome"></i></p>
         <button id="register" style="font-size: small;"> 切换用户 </button>
