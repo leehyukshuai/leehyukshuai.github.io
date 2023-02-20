@@ -1,0 +1,31 @@
+@import url('stylesheet.css');
+
+/* General setup */
+
+html {
+  font-size: 16px;
+  margin: 0;
+  font-family: 'sf_burlington_scriptbold';
+}
+
+body {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Typography */
+
+h1 {
+  font-size: 3.2rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+p {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  word-spacing: 0.6rem;
+}
