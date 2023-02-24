@@ -1,0 +1,180 @@
+/* import some fonts used later */
+@font-face {
+    font-family: 'Arvo';
+    src: url('fonts/Arvo-Regular.ttf');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Arvo';
+    src: url('fonts/Arvo-BoldItalic.ttf');
+    font-style: italic;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Arvo';
+    src: url('fonts/Arvo-Italic.ttf');
+    font-style: italic;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Arvo';
+    src: url('fonts/Arvo-Bold.ttf');
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Amargro';
+    src: url('fonts/Amagro.ttf');
+}
+
+/* Apply some basic styles */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    min-width: 1000px;
+    max-width: 1400px;
+}
+
+/* Layout */
+
+main {
+    display: flex;
+}
+
+section {
+    width: 50%;
+    margin-right: 5%;
+    background-color: royalblue;
+}
+
+aside {
+    width: 20%;
+    margin-right: 5%;
+    background-color: #a66;
+}
+
+nav {
+    width: 20%;
+    background-color: #5f1d34;
+}
+
+footer {
+    clear: both;
+}
+
+header,
+section,
+aside,
+nav,
+footer {
+    padding: 20px;
+}
+
+/* header and footer */
+
+header,
+footer {
+    border-top: 5px solid #a66;
+    border-bottom: 5px solid #a66;
+}
+
+/* WRITE YOUR CODE BELOW HERE */
+
+body {
+    font-family: 'Arvo';
+    font-size: 16px;
+    line-height: 1.4em;
+}
+
+h1 {
+    font-family: 'Amargro';
+    text-align: center;
+}
+
+h1, h2 {
+    letter-spacing: 0.03em;
+    word-spacing: 0.12em;
+}
+
+h2:hover {
+    text-decoration: underline;
+}
+
+h2:hover::after {
+    text-decoration: underline;
+    content: '#';
+    display: inline-block;
+    margin-left: 0.4em;
+}
+
+section :where(h1, h2) + p {
+    text-indent: 20px;
+}
+
+a {
+    height: 1em;
+}
+
+a:link {
+    color: rgb(170, 102, 102);
+}
+
+a:visited {
+    color: #5f1d34;
+}
+
+a:focus {
+    color: rgb(178, 70, 3);
+    text-decoration: none;
+    outline: none;
+}
+
+a:hover {
+    color: rgb(255, 98, 0);
+    text-decoration: none;
+}
+
+a:active {
+    background-color:rgba(203, 207, 144, 0.555);
+    color:rgb(170, 102, 102);
+    border-radius: 0.2em;
+}
+
+a[href^='http']::after {
+    content: "";
+    display: inline-block;
+    background-image: url('images/external-link.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: calc(0% + 2px) bottom;
+
+    padding-left: 1em;
+    height: 0.6em;
+}
+
+ul > li {
+    list-style : '☛ ';
+}
+
+nav li {
+    list-style: none;
+    margin: 1.6em 2em 0 0;
+}
+
+nav li a {
+    text-align: center;
+    background-color: rgba(172, 99, 99, 0.493);
+    padding: 1em;
+    font-size: large;
+    display: block;
+    height: 3em;
+}

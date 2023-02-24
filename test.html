@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>CSS-TEST</title>
+  <style>
+    p.result {
+      background-color: red;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>猜数字游戏</h1>
+  <p>现有一个1-100的数字，大小未知，给你10次机会看看你能不能猜出来</p>
+  <div class="form">
+    <input type="number" placeholder="请输入你猜的数字" min="1" max="100" id="guess-number">
+    <input type="submit" value="确认" id="guess-submit">
+  </div>
+  <p class="history">已经尝试过的值：</p>
+  <p class="result"></p>
+  <script>
+    let guess_count = 0
+    let answer = Math.floor(Math.random()*100)+1
+    let number_input = document.querySelector('#guess-number')
+    let submit_button = document.querySelector('#guess-submit')
+    let history_para = document.querySelector('p.history')
+    let result_para = document.querySelector('p.result')
+
+    function restart() {
+      guess_count = 0;
+      answer = Math.floor(Math.random()*100)+1
+      while (history_para.hasChildNodes()) {
+        history_para.removeChild(history_para.lastChild)
+      }
+      history_para.textContent = ''
+    }
+
+    function respond() {
+      let n = Number(number_input.value)
+      guess_count += 1
+      if (n === answer) {
+        result_para.textContent = '恭喜你答对了，共使用了' + String(guess_count) + '次机会！'
+        result_para.style.backgroundColor = 'green'
+      } else {
+        let s = String(n)
+        let t = document.createElement('span')
+        t.textContent = s
+        t.style.display = 'inline-box'
+        number_input.textContent = ""
+        if (n > answer) {
+          result_para.textContent = s + '太高了！'
+          t.style.borderTop = '1px red solid'
+          t.style.borderBottom = '1px green solid'
+        } else if (n < answer) {
+          result_para.textContent = s + '太低了！'
+          t.style.borderTop = '1px green solid'
+          t.style.borderBottom = '1px red solid'
+        }
+        history_para.appendChild(t)
+        history_para.append(' ')
+        if (guess_count === 10) {
+          result_para.textContent = '您已经用完了所有次数'
+          number_input.disabled = true
+          submit_button.value = "重新开始"
+          submit_button.onclick = restart
+        }
+      }
+    }
+
+    submit_button.onclick = respond
+
+  </script>
+</body>
+
+</html>

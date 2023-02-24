@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Game Start</title>
+    <style>
+        body {
+            width: 80%;
+            margin: 2em auto;
+            font-family: sans-serif;
+        }
+
+        input {
+            font: inherit;
+        }
+
+        #response {
+            padding: 0.2em;
+        }
+
+        .right {
+            color: white;
+            background-color: green;
+        }
+
+        .wrong {
+            color: white;
+            background-color: red;
+        }
+
+        .big {
+            display: inline-block;
+            border-top: 2px red solid;
+            border-bottom: 2px green solid;
+        }
+        
+        .small {
+            display: inline-block;
+            border-bottom: 2px red solid;
+            border-top: 2px green solid;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Game Start</h1>
+    <p>Guess a number between 1 and 100, within 10 chances.</p>
+    <div class="form">
+        <label for="guessField"> Enter a number:</label>
+        <input type="number" name="guessField" id="numberInput" min="1" max="100" placeholder="1~100">
+        <input type="submit" value="Check">
+    </div>
+    <div class="resultParas">
+        <p id="history">
+        </p>
+        <p id="response">
+        </p>
+    </div>
+    <script defer>
+        // Global values
+        let randomNumber, guessCount;
+        const numberInput = document.querySelector("#numberInput");
+        const submitButton = document.querySelector("input[type='submit']");
+        const historyPara = document.querySelector("#history");
+        const responsePara = document.querySelector("#response");
+        // 
+        numberInput.onkeydown = (e) => { if (e.keyCode === 13) { checkValue(); } };
+
+        function initialize() {
+            randomNumber = Math.floor(Math.random() * 100) + 1;
+            guessCount = 0;
+            historyPara.textContent = "History: ";
+            responsePara.textContent = "-";
+            submitButton.onclick = checkValue;
+            submitButton.value = "Check";
+            submitButton.disabled = false;
+            numberInput.value = "";
+            numberInput.focus();
+            numberInput.disabled = false;
+        }
+        // Initialize uninitialized values
+        initialize()
+        function gameOver() {
+            numberInput.disabled = true;
+            numberInput.style.backgroundColor = "transparent";
+            submitButton.value = "Restart";
+            submitButton.onclick = initialize;
+        }
+        function checkValue() {
+            const v = numberInput.value;
+            if (v == randomNumber) {
+                responsePara.textContent = "Congratulations! Answer is " + randomNumber;
+                responsePara.className = "right";
+                gameOver()
+            } else {
+                // 
+                const h = document.createElement("span");
+                h.textContent = v;
+                responsePara.className = "wrong";
+                if (v > randomNumber) {
+                    responsePara.textContent = v + " is too big";
+                    h.className = "big";
+                } else {
+                    responsePara.textContent = v + " is too small";
+                    h.className = "small";
+                }
+                historyPara.append(h);
+                historyPara.append(" ");
+                numberInput.value = "";
+                numberInput.focus();
+                // 
+                guessCount++;
+                if (guessCount == 10) {
+                    gameOver()
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
