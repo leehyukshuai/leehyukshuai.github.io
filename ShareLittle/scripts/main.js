@@ -1,1 +1,0 @@
-document.querySelectorAll('.card').forEach((i)=>{i.addEventListener('click', ()=>{alert('hei')})})

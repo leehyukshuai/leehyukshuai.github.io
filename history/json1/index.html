@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Our superheroes</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+    </header>
+
+    <section>
+
+    </section>
+
+    <script>
+        var header = document.querySelector('header');
+        var section = document.querySelector('section');
+        var requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+        var request = new XMLHttpRequest();
+        request.open('GET', requestURL);
+        request.responseType = 'json';
+        request.send();
+        request.onload = () => {
+            var superHeroes = request.response;
+            populateHeader(superHeroes);
+            showHeroes(superHeroes);
+        }
+        function populateHeader(jsonObj) {
+            var myH1 = document.createElement('h1');
+            myH1.textContent = jsonObj['squadName'];
+            header.appendChild(myH1);
+            var myPara = document.createElement('p');
+            myPara.textContent = 'hometown:' + jsonObj['homeTown'] + ' // formed: ' + jsonObj['formed'];
+            header.appendChild(myPara);
+        }
+        function showHeroes(jsonObj) {
+            var heroes = jsonObj['members'];
+            for (var i = 0; i < heroes.length; ++i) {
+                var myArticle = document.createElement('article');
+                section.appendChild(myArticle);
+                var hero = heroes[i];
+                var myH2 = document.createElement('h2');
+                myH2.textContent = hero['name'];
+                var myPara1 = document.createElement('p');
+                myPara1.textContent = 'age: ' + hero['age'];
+                var myPara2 = document.createElement('p');
+                myPara2.textContent = 'secret identity: ' + hero['secretIdentity'];
+                var myPara3 = document.createElement('p');
+                myPara3.textContent = 'super power:';
+                var myList = document.createElement('ul');
+                var powers = hero['powers'];
+                myArticle.appendChild(myH2);
+                myArticle.appendChild(myPara1);
+                myArticle.appendChild(myPara2);
+                myArticle.appendChild(myPara3);
+                myArticle.appendChild(myList);
+                for (var j = 0; j < powers.length; ++j) {
+                    var myItem = document.createElement('li');
+                    myItem.textContent = powers[j];
+                    myList.appendChild(myItem);
+                }
+            }
+            for (var j = 0; j < 20; ++j) {
+                var article = document.createElement('article');
+                var p = document.createElement('p');
+                p.textContent = 'healls';
+                article.appendChild(p);
+                section.appendChild(article);
+            }
+            var article = document.createElement('article');
+            var p = document.createElement('p');
+            p.textContent = 'dshjjjjjjjjjjjjjjjjjjjjjjheallsdshjjjjjjjjjjjjjjjjjjjjjjheallsdshjjjjjjjjjjjjjjjjjjjjjjheallsdshjjjjjjjjjjjjjjjjjjjjjjhealls';
+            article.appendChild(p);
+            section.appendChild(article);
+        }
+    </script>
+</body>
+
+</html>
